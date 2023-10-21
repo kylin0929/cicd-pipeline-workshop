@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: python
-        image: registry.srcmesh.dev/workshop/user-12:0.0.1
+        image: {{ .Values.python.image }}
         env:
         - name: REDIS_HOST
           value: redis-svc
@@ -23,7 +23,7 @@ spec:
         ports:
         - containerPort: 5000
       imagePullSecrets:
-      - name: pull-user-12
+      - name: {{ .Values.imagePullSecrets.name }}
 ---
 apiVersion: v1
 kind: Service
